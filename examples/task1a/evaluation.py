@@ -20,6 +20,8 @@ def recall(y_true, y_pred):
 
 
 def precision(y_true, y_pred):
+    print(y_true)
+    print(y_pred)
     y_true = decode(y_true)
     y_pred = decode(y_pred)
     return precision_score(y_true, y_pred, labels=labels, pos_label=pos_label)
