@@ -40,10 +40,10 @@ for i in range(config["n_fold"]):
 
     print("Completed Fold {}".format(i))
 # select majority class of each instance (row)
-final_predictions = []
-for row in dev_preds:
-    row = row.tolist()
-    final_predictions.append(int(max(set(row), key=row.count)))
+final_predictions = predictions
+# for row in dev_preds:
+#     row = row.tolist()
+#     final_predictions.append(int(max(set(row), key=row.count)))
 
 
 dev_submission = percentile_list = pd.DataFrame(
