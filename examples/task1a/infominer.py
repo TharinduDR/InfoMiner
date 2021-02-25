@@ -15,8 +15,9 @@ from infominer.classification import ClassificationModel
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 full = pd.read_csv(os.path.join("examples", "task1a", "data", "train.tsv"), sep='\t', names=['id', 'text', "row_class"], header=None)
-full['class'] = encode(full["row_class"])
-full = full[['text', 'class']]
+full['labels'] = encode(full["row_class"])
+full = full[['text', 'labels']]
+
 
 dev_df = pd.read_csv(os.path.join("examples", "task1a", "data", "tweets.tsv"), sep='\t')
 dev_sentences = dev_df['tweet'].tolist()
