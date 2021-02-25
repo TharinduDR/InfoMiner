@@ -22,7 +22,6 @@ full = full[['text', 'labels']]
 dev_df = pd.read_csv(os.path.join("examples", "task1a", "data", "tweets.tsv"), sep='\t')
 dev_sentences = dev_df['tweet'].tolist()
 
-dev_labels = pd.read_csv(os.path.join("examples", "task1a", "data", "class.tsv"), sep='\t')
 
 dev_preds = np.zeros((len(dev_sentences), config["n_fold"]))
 for i in range(config["n_fold"]):
@@ -52,10 +51,15 @@ dev_submission = percentile_list = pd.DataFrame(
      'label': final_predictions
     })
 
-dev_submission['label'] = decode(dev_submission['label'])
-dev_submission.to_csv(os.path.join(TEMP_DIRECTORY, "dev_class.tsv"), sep='\t', encoding='utf-8', index=False)
-
+dev_labels = pd.read_csv(os.path.join("examples", "task1a", "data", "class.tsv"), sep='\t')
+dev_labels["label"] = encode(dev_labels["label"])
 
 print(precision(dev_labels["label"].tolist(), dev_submission['label'].tolist()))
 print(recall(dev_labels["label"].tolist(), dev_submission['label'].tolist()))
 print(f1(dev_labels["label"].tolist(), dev_submission['label'].tolist()))
+
+dev_submission['label'] = decode(dev_submission['label'])
+dev_submission.to_csv(os.path.join(TEMP_DIRECTORY, "dev_class.tsv"), sep='\t', encoding='utf-8', index=False)
+
+
+
