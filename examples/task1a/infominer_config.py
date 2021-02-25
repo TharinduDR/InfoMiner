@@ -4,8 +4,8 @@ SEED = 777
 TEMP_DIRECTORY = "temp/data"
 RESULT_FILE = "result.tsv"
 SUBMISSION_FILE = "predictions.tsv"
-MODEL_TYPE = "xlmroberta"
-MODEL_NAME = "xlm-roberta-large"
+MODEL_TYPE = "bert"
+MODEL_NAME = "bert-base-cased"
 
 config = {
     'output_dir': 'temp/outputs/',
