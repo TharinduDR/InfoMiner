@@ -20,3 +20,9 @@ def precision(y_true, y_pred):
     y_true = list(map(int, y_true))
     y_pred = list(map(int, y_pred))
     return precision_score(y_true, y_pred)
+
+
+def confusion_matrix(y_true, y_pred):
+    y_true = list(map(int, y_true))
+    y_pred = list(map(int, y_pred))
+    return confusion_matrix(y_pred, y_true).ravel()
