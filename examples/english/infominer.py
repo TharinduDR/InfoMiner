@@ -52,9 +52,9 @@ for row in dev_preds:
 dev["predictions"] = dev_predictions
 
 
-print(precision(dev['labels'].tolist(), dev['predictions'].tolist()))
-print(recall(dev['labels'].tolist(), dev['predictions'].tolist()))
-print(f1(dev['labels'].tolist(), dev['predictions'].tolist()))
+print("Precision: ", precision(dev['labels'].tolist(), dev['predictions'].tolist()))
+print("Recall: ", recall(dev['labels'].tolist(), dev['predictions'].tolist()))
+print("F1: ", f1(dev['labels'].tolist(), dev['predictions'].tolist()))
 
 
 
