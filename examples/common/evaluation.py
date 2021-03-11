@@ -25,4 +25,4 @@ def precision(y_true, y_pred):
     y_pred = list(map(int, y_pred))
     y_true = decode(y_true)
     y_pred = decode(y_pred)
-    return precision_score(y_true, y_pred
+    return precision_score(y_true, y_pred)
