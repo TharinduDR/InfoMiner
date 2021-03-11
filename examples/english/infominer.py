@@ -8,7 +8,7 @@ import torch
 from sklearn.model_selection import train_test_split
 
 from examples.common.converter import encode, decode
-from examples.common.evaluation import precision, recall, f1, confusion_matrix
+from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.english.infominer_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
 
@@ -56,7 +56,7 @@ print("Precision: ", precision(dev['labels'].tolist(), dev['predictions'].tolist
 print("Recall: ", recall(dev['labels'].tolist(), dev['predictions'].tolist()))
 print("F1: ", f1(dev['labels'].tolist(), dev['predictions'].tolist()))
 
-tn, fp, fn, tp = confusion_matrix(dev['labels'].tolist(), dev['predictions'].tolist())
+tn, fp, fn, tp = confusion_matrix_values(dev['labels'].tolist(), dev['predictions'].tolist())
 print("Confusion Matrix (tn, fp, fn, tp) {} {} {} {}".format(tn, fp, fn, tp))
 
 
