@@ -1,1 +1,1 @@
-#Infominer: Fighting the COVID-19 Infodemic
+# Infominer: Fighting the COVID-19 Infodemic
