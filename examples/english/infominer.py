@@ -51,8 +51,6 @@ for row in dev_preds:
 
 dev["predictions"] = dev_predictions
 
-dev['labels'] = decode(dev["labels"])
-dev['predictions'] = decode(dev["predictions"])
 
 print(precision(dev['labels'].tolist(), dev['predictions'].tolist()))
 print(recall(dev['labels'].tolist(), dev['predictions'].tolist()))
