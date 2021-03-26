@@ -17,8 +17,7 @@ if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 full = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_binary_arabic_train.tsv"), sep='\t')
 full['labels'] = encode(full["q1_label"])
-full = full[['tweet_text', 'labels']]
-full = full.rename(columns={'tweet_text': 'text'})
+full = full[['text', 'labels']]
 
 
 train, dev = train_test_split(full, test_size=0.1, random_state=777)
