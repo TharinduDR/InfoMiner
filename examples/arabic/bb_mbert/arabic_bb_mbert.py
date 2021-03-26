@@ -15,7 +15,7 @@ from infominer.classification import ClassificationModel
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
-full = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_binary_arabic_train.tsv"), sep='\t')
+full = pd.read_csv(os.path.join("examples", "arabic", "../data", "covid19_disinfo_binary_arabic_train.tsv"), sep='\t')
 full['labels'] = encode(full["q1_label"])
 full = full[['text', 'labels']]
 
