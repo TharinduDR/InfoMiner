@@ -286,7 +286,7 @@ class ArabertPreprocessor:
             text = re.sub(regex_url, "[رابط]", text)
             text = re.sub(regex_email, "[بريد]", text)
             text = re.sub(regex_mention, "[مستخدم]", text)
-        text = re.sub("…", r"\.", text).strip()
+        text = re.sub("…", r"bb_arabert_tokenized", text).strip()
         text = self._remove_redundant_punct(text)
 
         if self.replace_urls_emails_mentions:

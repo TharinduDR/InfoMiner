@@ -5,7 +5,7 @@ TEMP_DIRECTORY = "temp/data"
 RESULT_FILE = "result.tsv"
 SUBMISSION_FILE = "predictions.tsv"
 MODEL_TYPE = "bert"
-MODEL_NAME = "aubmindlab/bert-base-arabert"
+MODEL_NAME = "aubmindlab/bert-base-arabertv2"
 
 config = {
     'output_dir': 'temp/outputs/',
