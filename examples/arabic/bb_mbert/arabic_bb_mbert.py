@@ -9,13 +9,12 @@ from sklearn.model_selection import train_test_split
 
 from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.english.infominer_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
+from examples.arabic.bb_mbert.arabic_bb_mbert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
-
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
-full = pd.read_csv(os.path.join("examples", "arabic", "../data", "covid19_disinfo_binary_arabic_train.tsv"), sep='\t')
+full = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_binary_arabic_train.tsv"), sep='\t')
 full['labels'] = encode(full["q1_label"])
 full = full[['text', 'labels']]
 
