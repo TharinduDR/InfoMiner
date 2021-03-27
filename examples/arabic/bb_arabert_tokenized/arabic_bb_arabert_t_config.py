@@ -26,7 +26,6 @@ config = {
     'warmup_steps': 0,
     'max_grad_norm': 1.0,
     'do_lower_case': False,
-    'do_basic_tokenize': True,
 
     'logging_steps': 40,
     'save_steps': 40,
