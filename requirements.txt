@@ -12,3 +12,4 @@ tokenizers
 wandb
 streamlit
 sentencepiece
+farasapy
