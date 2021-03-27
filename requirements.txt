@@ -13,3 +13,4 @@ wandb
 streamlit
 sentencepiece
 farasapy
+pyarabic

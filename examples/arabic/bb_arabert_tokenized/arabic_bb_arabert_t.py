@@ -11,7 +11,7 @@ from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.arabic.bb_arabert_tokenized.arabic_bb_arabert_t_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
-from arabert.preprocess import ArabertPreprocessor
+from examples.arabic.bb_arabert_tokenized.arabert_preprocess import ArabertPreprocessor
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
