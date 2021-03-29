@@ -7,20 +7,17 @@ import os
 import torch
 from sklearn.model_selection import train_test_split
 
-from examples.common.converter import encode
+from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.arabic.bb_arabert_v2_tokenized.arabic_bb_arabert_v2_t_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
+from examples.arabic.bb_arabert_v2.arabic_bb_arabert_v2_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
-from examples.arabic.arabert_preprocess import ArabertPreprocessor
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 full = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_binary_arabic_train.tsv"), sep='\t')
 full['labels'] = encode(full["q1_label"])
 full = full[['text', 'labels']]
-arabert_prep = ArabertPreprocessor(model_name=MODEL_NAME)
-full['text'] = full['text'].apply(arabert_prep.preprocess)
-print("preprocess tokenization done!")
+
 
 train, dev = train_test_split(full, test_size=0.1, random_state=777)
 
