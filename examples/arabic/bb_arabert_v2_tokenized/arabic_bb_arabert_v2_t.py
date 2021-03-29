@@ -19,7 +19,7 @@ full = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_b
 full['labels'] = encode(full["q1_label"])
 full = full[['text', 'labels']]
 arabert_prep = ArabertPreprocessor(model_name=MODEL_NAME)
-full['text'] = arabert_prep.preprocess(full['text'])
+full['text'] = full['text'].apply(arabert_prep.preprocess)
 
 train, dev = train_test_split(full, test_size=0.1, random_state=777)
 
