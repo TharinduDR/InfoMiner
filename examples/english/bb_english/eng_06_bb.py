@@ -16,7 +16,7 @@ from infominer.classification import ClassificationModel
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 full = pd.read_csv(os.path.join("examples", "english", "data", "covid19_disinfo_binary_english_train.tsv"), sep='\t')
-full.drop(full[full['q6_label'] == 'nan'].index, inplace=True)
+full.dropna(subset=["q5_label"], inplace=True)
 full['labels'] = encode(full["q6_label"])
 full = full[['tweet_text', 'labels']]
 full = full.rename(columns={'tweet_text': 'text'})
