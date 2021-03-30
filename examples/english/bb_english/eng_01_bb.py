@@ -7,9 +7,9 @@ import os
 import torch
 from sklearn.model_selection import train_test_split
 
-from examples.common.converter import encode, decode
+from examples.common.converter import encode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.english.infominer_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
+from examples.english.bb_english.eng_bb_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
 
 
