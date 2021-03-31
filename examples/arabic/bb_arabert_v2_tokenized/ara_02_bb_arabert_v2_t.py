@@ -16,6 +16,7 @@ from examples.arabic.arabert_preprocess import ArabertPreprocessor
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 full = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_binary_arabic_train.tsv"), sep='\t')
+full.dropna(subset=["q2_label"], inplace=True)
 full['labels'] = encode(full["q2_label"])
 full = full[['text', 'labels']]
 arabert_prep = ArabertPreprocessor(model_name=MODEL_NAME)
