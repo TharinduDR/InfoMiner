@@ -9,13 +9,14 @@ from sklearn.model_selection import train_test_split
 
 from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.bulgarian.bb_mbert.bulgarian_bb_mbert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
+from examples.bulgarian.bb_mbert.bul_bb_mbert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 full = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_train.tsv"), sep='\t')
-full['labels'] = encode(full["q1_label"])
+full.dropna(subset=["q4_label"], inplace=True)
+full['labels'] = encode(full["q4_label"])
 full = full[['text', 'labels']]
 
 
