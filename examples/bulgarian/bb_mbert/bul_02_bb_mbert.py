@@ -19,7 +19,6 @@ full.dropna(subset=["q2_label"], inplace=True)
 full['labels'] = encode(full["q2_label"])
 full = full[['text', 'labels']]
 
-
 train, dev = train_test_split(full, test_size=0.1, random_state=777)
 
 dev_sentences = dev['text'].tolist()
