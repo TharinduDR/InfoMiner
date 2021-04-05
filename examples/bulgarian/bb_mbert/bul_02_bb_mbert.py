@@ -16,8 +16,21 @@ if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 full = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_train.tsv"), sep='\t')
 full.dropna(subset=["q2_label"], inplace=True)
+
+# Class count
+count_class_no, count_class_yes = full.q2_label.value_counts()
+
+# Divide by class
+df_class_no = full[full['q2_label'] == "no"]
+df_class_yes = full[full['q2_label'] == "yes"]
+
+df_class_no_under = df_class_no.sample(count_class_yes*4)
+full = pd.concat([df_class_no_under, df_class_yes], axis=0)
+
 full['labels'] = encode(full["q2_label"])
 full = full[['text', 'labels']]
+
+full = full.sample(frac=1)
 
 train, dev = train_test_split(full, test_size=0.1, random_state=777)
 
