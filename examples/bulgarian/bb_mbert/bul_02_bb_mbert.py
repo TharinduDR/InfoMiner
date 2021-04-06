@@ -11,6 +11,7 @@ from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.bulgarian.bb_mbert.bul_bb_mbert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
+from examples.sample_size_counter import sample_size_counter
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
@@ -24,8 +25,17 @@ count_class_no, count_class_yes = full.q2_label.value_counts()
 df_class_no = full[full['q2_label'] == "no"]
 df_class_yes = full[full['q2_label'] == "yes"]
 
-df_class_no_under = df_class_no.sample(count_class_yes*2)
-full = pd.concat([df_class_no_under, df_class_yes], axis=0)
+size_counter = sample_size_counter(df_class_no, df_class_yes)
+
+if size_counter > 0:
+
+    df_class_no_under = df_class_no.sample(count_class_yes * size_counter)
+    full = pd.concat([df_class_no_under, df_class_yes], axis=0)
+
+else:
+
+    df_class_yes_under = df_class_yes.sample(count_class_no * abs(size_counter))
+    full = pd.concat([df_class_yes_under, df_class_no], axis=0)
 
 full['labels'] = encode(full["q2_label"])
 full = full[['text', 'labels']]
