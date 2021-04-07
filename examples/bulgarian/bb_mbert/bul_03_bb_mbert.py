@@ -32,13 +32,13 @@ print("size counter : ", size_counter)
 
 if size_counter > 0:
 
-    df_class_no_under = df_class_no.sample(count_class_yes * size_counter)
+    df_class_no_under = df_class_no.sample(n=count_class_yes * size_counter)
     print("under sized NOs : ", df_class_no_under['q3_label'].count())
     full = pd.concat([df_class_no_under, df_class_yes], axis=0)
 
 else:
 
-    df_class_yes_under = df_class_yes.sample(count_class_no * abs(size_counter))
+    df_class_yes_under = df_class_yes.sample(n=count_class_no * abs(size_counter))
     print("under sized YESs : ", df_class_yes_under['q3_label'].count())
     full = pd.concat([df_class_yes_under, df_class_no], axis=0)
 
