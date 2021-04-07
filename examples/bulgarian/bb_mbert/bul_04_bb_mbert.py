@@ -20,6 +20,7 @@ full.dropna(subset=["q4_label"], inplace=True)
 
 # Class count
 count_class_no, count_class_yes = full.q4_label.value_counts(ascending=True)
+print("no ", count_class_no, "yes ", count_class_yes)
 
 # Divide by class
 df_class_no = full[full['q4_label'] == "no"]
