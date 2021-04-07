@@ -25,7 +25,7 @@ count_class_no, count_class_yes = full.q4_label.value_counts().sort_index(ascend
 df_class_no = full[full['q4_label'] == "no"]
 df_class_yes = full[full['q4_label'] == "yes"]
 
-size_counter = sample_size_counter(df_class_no['q4_label'].count(), df_class_yes['q4_label'].count())
+size_counter = sample_size_counter(count_class_no, count_class_yes)
 print("NOs : ", df_class_no['q4_label'].count())
 print("YESs : ", df_class_yes['q4_label'].count())
 print("size counter : ", size_counter)
