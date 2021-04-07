@@ -19,7 +19,7 @@ full = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinf
 full.dropna(subset=["q7_label"], inplace=True)
 
 # Class count
-count_class_no, count_class_yes = full.q7_label.value_counts(ascending=True)
+count_class_no, count_class_yes = full.q7_label.value_counts().sort_index(ascending=False)
 
 # Divide by class
 df_class_no = full[full['q7_label'] == "no"]
