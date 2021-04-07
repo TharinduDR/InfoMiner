@@ -26,8 +26,8 @@ df_class_no = full[full['q3_label'] == "no"]
 df_class_yes = full[full['q3_label'] == "yes"]
 
 size_counter = sample_size_counter(df_class_no['q3_label'].count(), df_class_yes['q3_label'].count())
-print("NOs : ", df_class_no['q3_label'].count())
-print("YESs : ", df_class_yes['q3_label'].count())
+print("NOs : ", df_class_no['q3_label'].count(), ",", count_class_no)
+print("YESs : ", df_class_yes['q3_label'].count(), ",", count_class_yes)
 print("size counter : ", size_counter)
 
 if size_counter > 0:
