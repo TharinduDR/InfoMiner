@@ -7,7 +7,7 @@ import os
 import torch
 from sklearn.model_selection import train_test_split
 
-from examples.common.converter import encode
+from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.english.bb_english.eng_bb_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
     SUBMISSION_FILE
@@ -80,8 +80,10 @@ tn, fp, fn, tp = confusion_matrix_values(dev['labels'].tolist(), dev['prediction
 print("Confusion Matrix (tn, fp, fn, tp) {} {} {} {}".format(tn, fp, fn, tp))
 
 
+converted_test_predictions = decode(test_predictions)
+
 with open(os.path.join(TEMP_DIRECTORY, SUBMISSION_FILE), 'w') as f:
-    for item in test_predictions:
+    for item in converted_test_predictions:
         f.write("%s\n" % item)
 
 
