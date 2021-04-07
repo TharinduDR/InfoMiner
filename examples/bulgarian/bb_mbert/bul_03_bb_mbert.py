@@ -25,16 +25,21 @@ count_class_no, count_class_yes = full.q2_label.value_counts()
 df_class_no = full[full['q3_label'] == "no"]
 df_class_yes = full[full['q3_label'] == "yes"]
 
-size_counter = sample_size_counter(df_class_no, df_class_yes)
+size_counter = sample_size_counter(df_class_no['q3_label'].count(), df_class_yes['q3_label'].count())
+print("NOs : ", df_class_no['q3_label'].count())
+print("YESs : ", df_class_yes['q3_label'].count())
+print("size counter : ", size_counter)
 
 if size_counter > 0:
 
     df_class_no_under = df_class_no.sample(count_class_yes * size_counter)
+    print("under sized NOs : ", df_class_no_under['q3_label'].count())
     full = pd.concat([df_class_no_under, df_class_yes], axis=0)
 
 else:
 
     df_class_yes_under = df_class_yes.sample(count_class_no * abs(size_counter))
+    print("under sized YESs : ", df_class_yes_under['q3_label'].count())
     full = pd.concat([df_class_yes_under, df_class_no], axis=0)
 
 full['labels'] = encode(full["q3_label"])
