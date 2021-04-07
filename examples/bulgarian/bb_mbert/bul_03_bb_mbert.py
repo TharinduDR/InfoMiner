@@ -19,7 +19,7 @@ full = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinf
 full.dropna(subset=["q3_label"], inplace=True)
 
 # Class count
-count_class_no, count_class_yes = full.q2_label.value_counts()
+count_class_no, count_class_yes = full.q3_label.value_counts()
 
 # Divide by class
 df_class_no = full[full['q3_label'] == "no"]
@@ -32,13 +32,13 @@ print("size counter : ", size_counter)
 
 if size_counter > 0:
 
-    df_class_no_under = df_class_no.sample(n=count_class_yes * size_counter)
+    df_class_no_under = df_class_no.sample(count_class_yes * size_counter)
     print("under sized NOs : ", df_class_no_under['q3_label'].count())
     full = pd.concat([df_class_no_under, df_class_yes], axis=0)
 
 else:
 
-    df_class_yes_under = df_class_yes.sample(n=count_class_no * abs(size_counter))
+    df_class_yes_under = df_class_yes.sample(count_class_no * abs(size_counter))
     print("under sized YESs : ", df_class_yes_under['q3_label'].count())
     full = pd.concat([df_class_yes_under, df_class_no], axis=0)
 
