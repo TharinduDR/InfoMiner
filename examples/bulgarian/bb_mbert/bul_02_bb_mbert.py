@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.english.bb_english.eng_bb_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
+from examples.bulgarian.bb_mbert.bul_bb_mbert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
     SUBMISSION_FILE
 from examples.sample_size_counter import sample_size_counter
 from infominer.classification import ClassificationModel
@@ -47,13 +47,13 @@ else:
 train['labels'] = encode(train["q2_label"])
 train = train[['text', 'labels']]
 
-dev = pd.read_csv(os.path.join("examples", "english", "data", "covid19_disinfo_binary_english_dev_input.tsv"), sep='\t')
+dev = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_dev_input.tsv"), sep='\t')
 
 dev.dropna(subset=["q2_label"], inplace=True)
 dev['labels'] = encode(dev["q2_label"])
 dev = dev[['text', 'labels']]
 
-test = pd.read_csv(os.path.join("examples", "english", "data", "covid19_disinfo_binary_english_test_input.tsv"), sep='\t')
+test = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_test_input.tsv"), sep='\t')
 
 dev_sentences = dev['text'].tolist()
 dev_preds = np.zeros((len(dev_sentences), config["n_fold"]))
