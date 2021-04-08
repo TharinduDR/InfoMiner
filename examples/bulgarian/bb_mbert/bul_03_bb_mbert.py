@@ -27,7 +27,7 @@ count_class_no, count_class_yes = train.q3_label.value_counts().sort_index(ascen
 df_class_no = train[train['q3_label'] == "no"]
 df_class_yes = train[train['q3_label'] == "yes"]
 
-size_counter = sample_size_counter(count_class_no, count_class_yes, 1)
+size_counter = sample_size_counter(count_class_no, count_class_yes, 2)
 print("NOs : ", df_class_no['q3_label'].count())
 print("YESs : ", df_class_yes['q3_label'].count())
 print("size counter : ", size_counter)
@@ -47,7 +47,7 @@ else:
 train['labels'] = encode(train["q3_label"])
 train = train[['text', 'labels']]
 
-dev = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_dev_input.tsv"), sep='\t')
+dev = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_dev.tsv"), sep='\t')
 
 dev.dropna(subset=["q3_label"], inplace=True)
 dev['labels'] = encode(dev["q3_label"])
