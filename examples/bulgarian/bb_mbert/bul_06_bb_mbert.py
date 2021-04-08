@@ -47,7 +47,7 @@ else:
 train['labels'] = encode(train["q6_label"])
 train = train[['text', 'labels']]
 
-dev = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_dev_input.tsv"), sep='\t')
+dev = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_dev.tsv"), sep='\t')
 
 dev.dropna(subset=["q6_label"], inplace=True)
 dev['labels'] = encode(dev["q6_label"])
