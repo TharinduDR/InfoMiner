@@ -9,23 +9,25 @@ from sklearn.model_selection import train_test_split
 
 from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.bulgarian.bb_mbert.bul_bb_mbert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
+from examples.english.bb_english.eng_bb_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
+    SUBMISSION_FILE
 from examples.sample_size_counter import sample_size_counter
 from infominer.classification import ClassificationModel
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
-full = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_train.tsv"), sep='\t')
-full.dropna(subset=["q7_label"], inplace=True)
+train = pd.read_csv(os.path.join("examples", "bulgarian", "data", "covid19_disinfo_binary_bulgarian_train.tsv"), sep='\t')
+
+train.dropna(subset=["q7_label"], inplace=True)
 
 # Class count
-count_class_no, count_class_yes = full.q7_label.value_counts().sort_index(ascending=True)
+count_class_no, count_class_yes = train.q7_label.value_counts().sort_index(ascending=True)
 
 # Divide by class
-df_class_no = full[full['q7_label'] == "no"]
-df_class_yes = full[full['q7_label'] == "yes"]
+df_class_no = train[train['q7_label'] == "no"]
+df_class_yes = train[train['q7_label'] == "yes"]
 
-size_counter = sample_size_counter(count_class_no, count_class_yes)
+size_counter = sample_size_counter(count_class_no, count_class_yes, 1)
 print("NOs : ", df_class_no['q7_label'].count())
 print("YESs : ", df_class_yes['q7_label'].count())
 print("size counter : ", size_counter)
@@ -34,22 +36,30 @@ if size_counter > 0:
 
     df_class_no_under = df_class_no.sample(count_class_yes * size_counter)
     print("under sized NOs : ", df_class_no_under['q7_label'].count())
-    full = pd.concat([df_class_no_under, df_class_yes], axis=0)
+    train = pd.concat([df_class_no_under, df_class_yes], axis=0)
 
 else:
 
     df_class_yes_under = df_class_yes.sample(count_class_no * abs(size_counter))
     print("under sized YESs : ", df_class_yes_under['q7_label'].count())
-    full = pd.concat([df_class_yes_under, df_class_no], axis=0)
+    train = pd.concat([df_class_yes_under, df_class_no], axis=0)
 
-full['labels'] = encode(full["q7_label"])
-full = full[['text', 'labels']]
+train['labels'] = encode(train["q7_label"])
+train = train[['text', 'labels']]
 
+dev = pd.read_csv(os.path.join("examples", "english", "data", "covid19_disinfo_binary_english_dev_input.tsv"), sep='\t')
 
-train, dev = train_test_split(full, test_size=0.1, random_state=777)
+dev.dropna(subset=["q7_label"], inplace=True)
+dev['labels'] = encode(dev["q7_label"])
+dev = dev[['text', 'labels']]
+
+test = pd.read_csv(os.path.join("examples", "english", "data", "covid19_disinfo_binary_english_test_input.tsv"), sep='\t')
 
 dev_sentences = dev['text'].tolist()
 dev_preds = np.zeros((len(dev_sentences), config["n_fold"]))
+
+test_sentences = test['text'].tolist()
+test_preds = np.zeros((len(test_sentences), config["n_fold"]))
 
 for i in range(config["n_fold"]):
     if os.path.exists(config['output_dir']) and os.path.isdir(config['output_dir']):
@@ -57,13 +67,16 @@ for i in range(config["n_fold"]):
     print("Started Fold {}".format(i))
     model = ClassificationModel(MODEL_TYPE, MODEL_NAME, args=config,
                                 use_cuda=torch.cuda.is_available())
-    train_df, eval_df = train_test_split(full, test_size=0.1, random_state=SEED * i)
+    train_df, eval_df = train_test_split(train, test_size=0.1, random_state=SEED * i)
     model.train_model(train_df, eval_df=eval_df, precision=precision, recall=recall, f1=f1)
     model = ClassificationModel(MODEL_TYPE, config["best_model_dir"], args=config,
                                 use_cuda=torch.cuda.is_available())
 
     predictions, raw_outputs = model.predict(dev_sentences)
     dev_preds[:, i] = predictions
+
+    test_predictions, test_raw_outputs = model.predict(test_sentences)
+    test_preds[:, i] = test_predictions
 
     print("Completed Fold {}".format(i))
 
@@ -72,6 +85,13 @@ dev_predictions = []
 for row in dev_preds:
     row = row.tolist()
     dev_predictions.append(int(max(set(row), key=row.count)))
+
+
+# select majority class of each instance (row)
+test_predictions = []
+for row in test_preds:
+    row = row.tolist()
+    test_predictions.append(int(max(set(row), key=row.count)))
 
 
 dev["predictions"] = dev_predictions
@@ -85,4 +105,9 @@ tn, fp, fn, tp = confusion_matrix_values(dev['labels'].tolist(), dev['prediction
 print("Confusion Matrix (tn, fp, fn, tp) {} {} {} {}".format(tn, fp, fn, tp))
 
 
+converted_test_predictions = decode(test_predictions)
+
+with open(os.path.join(TEMP_DIRECTORY, SUBMISSION_FILE), 'w') as f:
+    for item in converted_test_predictions:
+        f.write("%s\n" % item)
 
