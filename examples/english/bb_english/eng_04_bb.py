@@ -53,32 +53,6 @@ train = train.rename(columns={'tweet_text': 'text'})
 dev = pd.read_csv(os.path.join("examples", "english", "data", "covid19_disinfo_binary_english_dev_input.tsv"), sep='\t')
 
 dev.dropna(subset=["q4_label"], inplace=True)
-
-# Class count
-count_class_no, count_class_yes = dev.q4_label.value_counts().sort_index(ascending=True)
-
-# Divide by class
-df_class_no = dev[dev['q4_label'] == "no"]
-df_class_yes = dev[dev['q4_label'] == "yes"]
-
-# get the size counter value to down size the unbalanced label value
-size_counter = sample_size_counter(count_class_no, count_class_yes)
-print("NOs : ", df_class_no['q4_label'].count())
-print("YESs : ", df_class_yes['q4_label'].count())
-print("size counter : ", size_counter)
-
-if size_counter > 0:
-
-    df_class_no_under = df_class_no.sample(count_class_yes * size_counter)
-    print("under sized NOs : ", df_class_no_under['q4_label'].count())
-    dev = pd.concat([df_class_no_under, df_class_yes], axis=0)
-
-else:
-
-    df_class_yes_under = df_class_yes.sample(count_class_no * abs(size_counter))
-    print("under sized YESs : ", df_class_yes_under['q4_label'].count())
-    dev = pd.concat([df_class_yes_under, df_class_no], axis=0)
-
 dev['labels'] = encode(dev["q4_label"])
 dev = dev[['tweet_text', 'labels']]
 dev = dev.rename(columns={'tweet_text': 'text'})
