@@ -28,7 +28,7 @@ count_class_no, count_class_yes = train.q5_label.value_counts().sort_index(ascen
 df_class_no = train[train['q5_label'] == "no"]
 df_class_yes = train[train['q5_label'] == "yes"]
 
-size_counter = sample_size_counter(count_class_no, count_class_yes)
+size_counter = sample_size_counter(count_class_no, count_class_yes, 2)
 print("NOs : ", df_class_no['q5_label'].count())
 print("YESs : ", df_class_yes['q5_label'].count())
 print("size counter : ", size_counter)
