@@ -56,7 +56,7 @@ dev = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_bi
 dev.dropna(subset=["q5_label"], inplace=True)
 dev['labels'] = encode(dev["q5_label"])
 dev = dev[['text', 'labels']]
-train['text'] = train['text'].apply(arabert_prep.preprocess)
+dev['text'] = dev['text'].apply(arabert_prep.preprocess)
 print("--> dev preprocess tokenization done!")
 
 test = pd.read_csv(os.path.join("examples", "arabic", "data", "covid19_disinfo_binary_arabic_test_input.tsv"), sep='\t')
