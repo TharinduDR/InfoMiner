@@ -4,7 +4,7 @@ SEED = 777
 TEMP_DIRECTORY = "temp/data"
 RESULT_FILE = "result.tsv"
 SUBMISSION_FILE = "predictions.tsv"
-MODEL_TYPE = "roberta"
+MODEL_TYPE = "bert"
 MODEL_NAME = "vinai/bertweet-base"
 
 config = {
