@@ -7,9 +7,11 @@ import os
 import torch
 from sklearn.model_selection import train_test_split
 
-from examples.nlp4if.common import encode
+from examples.common.converter import encode
+from examples.nlp4if.arabic.bb_arabert.arabic_bb_arabert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, \
+    SEED
 from examples.nlp4if.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.nlp4if.arabic import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
+
 from infominer.classification import ClassificationModel
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)

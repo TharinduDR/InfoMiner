@@ -7,11 +7,12 @@ import os
 import torch
 from sklearn.model_selection import train_test_split
 
-from examples.nlp4if.common import encode
+from examples.nlp4if.arabic.arabert_preprocess import ArabertPreprocessor
+from examples.nlp4if.common.converter import encode
 from examples.nlp4if.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.nlp4if.arabic.bl_arabert_v2_tokenized.arabic_bl_arabert_v2_t_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
-from examples.nlp4if.arabic import ArabertPreprocessor
+
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 

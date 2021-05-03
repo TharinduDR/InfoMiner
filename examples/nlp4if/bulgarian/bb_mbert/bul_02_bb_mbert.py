@@ -7,7 +7,7 @@ import os
 import torch
 from sklearn.model_selection import train_test_split
 
-from examples.nlp4if.common import encode, decode
+from examples.nlp4if.common.converter import encode, decode
 from examples.nlp4if.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.nlp4if.bulgarian.bb_mbert.bul_bb_mbert_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
     SUBMISSION_FILE

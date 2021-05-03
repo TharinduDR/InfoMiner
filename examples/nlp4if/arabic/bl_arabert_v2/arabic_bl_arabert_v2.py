@@ -7,7 +7,7 @@ import os
 import torch
 from sklearn.model_selection import train_test_split
 
-from examples.nlp4if.common import encode
+from examples.nlp4if.common.converter import encode
 from examples.nlp4if.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.nlp4if.arabic.bl_arabert_v2.arabic_bl_arabert_v2_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED
 from infominer.classification import ClassificationModel
