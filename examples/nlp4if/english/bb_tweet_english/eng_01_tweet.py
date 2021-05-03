@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 from examples.common.converter import encode, decode
 from examples.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.english.bb_tweet_english.eng_tweet_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
+from examples.nlp4if.english.bb_tweet_english.eng_tweet_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
     SUBMISSION_FILE
 from infominer.classification import ClassificationModel
 
