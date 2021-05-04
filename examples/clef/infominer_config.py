@@ -4,8 +4,9 @@ SEED = 777
 TEMP_DIRECTORY = "temp/data"
 DEV_RESULT_FILE = "dev_predictions.txt"
 SUBMISSION_FILE = "predictions.txt"
-MODEL_TYPE = "bert"
-MODEL_NAME = "bert-base-cased"
+MODEL_TYPE = "xlmroberta"
+MODEL_NAME = "xlm-roberta-large"
+
 
 config = {
     'output_dir': 'temp/outputs/',
@@ -18,7 +19,7 @@ config = {
     'train_batch_size': 8,
     'gradient_accumulation_steps': 1,
     'eval_batch_size': 8,
-    'num_train_epochs': 5,
+    'num_train_epochs': 3,
     'weight_decay': 0,
     'learning_rate': 1e-5,
     'adam_epsilon': 1e-8,
@@ -27,14 +28,14 @@ config = {
     'max_grad_norm': 1.0,
     'do_lower_case': False,
 
-    'logging_steps': 10,
-    'save_steps': 10,
+    'logging_steps': 200,
+    'save_steps': 200,
     "no_cache": False,
     'save_model_every_epoch': True,
     "save_recent_only": True,
-    'n_fold': 1,
+    'n_fold': 3,
     'evaluate_during_training': True,
-    'evaluate_during_training_steps': 10,
+    'evaluate_during_training_steps': 200,
     "evaluate_during_training_verbose": True,
     'use_cached_eval_features': False,
     'save_eval_checkpoints': True,
