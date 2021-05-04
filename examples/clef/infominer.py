@@ -45,17 +45,18 @@ test_list = []
 test_sentences_list = []
 
 for key, value in languages.items():
+    print("Reading ", key)
 
     train_temp = pd.read_csv(value[0], sep='\t')
     dev_temp = pd.read_csv(value[1], sep='\t')
     test_temp = pd.read_csv(value[2], sep='\t')
 
-    train_temp = train_temp[['tweet_text', 'check_worthiness']]
-    # dev_temp = dev_temp[['tweet_text', 'check_worthiness']]
+    train_temp = train_temp[['tweet_text', 'claim_worthiness']]
+    # dev_temp = dev_temp[['tweet_text', 'claim_worthiness']]
     # test_temp = test_temp[['tweet_text']]
 
-    train_temp = train_temp.rename(columns={'tweet_text': 'text', 'check_worthiness': 'labels'}).dropna()
-    dev_temp = dev_temp.rename(columns={'tweet_text': 'text', 'check_worthiness': 'labels'}).dropna()
+    train_temp = train_temp.rename(columns={'tweet_text': 'text', 'claim_worthiness': 'labels'}).dropna()
+    dev_temp = dev_temp.rename(columns={'tweet_text': 'text', 'claim_worthiness': 'labels'}).dropna()
     test_temp = test_temp.rename(columns={'tweet_text': 'text'}).dropna()
 
     test_sentences_temp = test_temp['text'].tolist()
