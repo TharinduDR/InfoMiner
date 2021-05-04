@@ -2,6 +2,7 @@ from multiprocessing import cpu_count
 
 SEED = 777
 TEMP_DIRECTORY = "temp/data"
+DEV_RESULT_FILE = "dev_predictions.txt"
 SUBMISSION_FILE = "predictions.txt"
 MODEL_TYPE = "bert"
 MODEL_NAME = "bert-base-cased"
