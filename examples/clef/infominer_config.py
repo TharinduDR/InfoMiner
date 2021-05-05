@@ -2,8 +2,8 @@ from multiprocessing import cpu_count
 
 SEED = 777
 TEMP_DIRECTORY = "temp/data"
-DEV_RESULT_FILE = "dev_predictions.txt"
-SUBMISSION_FILE = "predictions.txt"
+DEV_RESULT_FILE = "dev_predictions.tsv"
+SUBMISSION_FILE = "predictions.tsv"
 MODEL_TYPE = "xlmroberta"
 MODEL_NAME = "xlm-roberta-large"
 
