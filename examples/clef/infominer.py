@@ -67,7 +67,7 @@ for key, value in languages.items():
     train_list.append(train_temp)
     dev_list.append(dev_temp)
     test_list.append(test_temp)
-    dev_sentences_list.append(dev_sentences_list)
+    dev_sentences_list.append(dev_sentences_temp)
     test_sentences_list.append(test_sentences_temp)
 
 
