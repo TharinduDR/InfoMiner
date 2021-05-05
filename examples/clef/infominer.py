@@ -73,7 +73,7 @@ for key, value in languages.items():
 
 
 train = pd.concat(train_list)
-train["labels"] = train["labels"] .astype(float)
+train["labels"] = train["labels"].astype(float)
 train = train.sample(frac=1)
 
 dev_preds_list = []
