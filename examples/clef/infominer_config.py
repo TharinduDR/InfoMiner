@@ -28,8 +28,8 @@ config = {
     'max_grad_norm': 1.0,
     'do_lower_case': False,
 
-    'logging_steps': 200,
-    'save_steps': 200,
+    'logging_steps': 300,
+    'save_steps': 300,
     "no_cache": False,
     'save_model_every_epoch': True,
     "save_recent_only": True,
