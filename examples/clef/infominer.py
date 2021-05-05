@@ -42,6 +42,8 @@ languages = {
 train_list = []
 dev_list = []
 test_list = []
+
+dev_sentences_list = []
 test_sentences_list = []
 
 for key, value in languages.items():
@@ -59,12 +61,15 @@ for key, value in languages.items():
     dev_temp = dev_temp.rename(columns={'tweet_text': 'text', 'claim_worthiness': 'labels'}).dropna()
     test_temp = test_temp.rename(columns={'tweet_text': 'text'}).dropna()
 
+    dev_sentences_temp = dev_temp['text'].tolist()
     test_sentences_temp = test_temp['text'].tolist()
 
     train_list.append(train_temp)
     dev_list.append(dev_temp)
     test_list.append(test_temp)
+    dev_sentences_list.append(dev_sentences_list)
     test_sentences_list.append(test_sentences_temp)
+
 
 train = pd.concat(train_list)
 
@@ -84,17 +89,17 @@ for i in range(config["n_fold"]):
     print("Started Fold {}".format(i))
     model = ClassificationModel(MODEL_TYPE, MODEL_NAME, args=config,
                                 use_cuda=torch.cuda.is_available())
-    train_df, eval_df = train_test_split(train, test_size=0.1, random_state=SEED * i)
+    train_df, eval_df = train_test_split(train, test_size=0.2, random_state=SEED * i)
     model.train_model(train_df, eval_df=eval_df, precision=precision, recall=recall, f1=f1)
     model = ClassificationModel(MODEL_TYPE, config["best_model_dir"], args=config,
                                 use_cuda=torch.cuda.is_available())
 
-    for dev, test_sentences, dev_preds, test_preds in zip(dev_list, test_sentences_list, dev_preds_list,
+    for dev_sentences, test_sentences, dev_preds, test_preds in zip(dev_sentences_list, test_sentences_list, dev_preds_list,
                                                                test_preds_list):
-        result, model_outputs, wrong_predictions = model.eval_model(dev)
-        predictions, raw_outputs = model.predict(test_sentences)
-        dev_preds[:, i] = model_outputs
-        test_preds[:, i] = predictions
+        dev_predictions, dev_raw_outputs = model.predict(dev_sentences)
+        test_predictions, test_raw_outputs = model.predict(test_sentences)
+        dev_preds[:, i] = dev_predictions
+        test_preds[:, i] = test_predictions
 
 for dev, dev_preds, test, test_preds in zip(dev_list, dev_preds_list, test_list, test_preds_list):
     dev['predictions'] = dev_preds.mean(axis=1)
