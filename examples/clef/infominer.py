@@ -72,6 +72,7 @@ for key, value in languages.items():
 
 
 train = pd.concat(train_list)
+train = train.sample(frac=1)
 
 dev_preds_list = []
 test_preds_list = []
