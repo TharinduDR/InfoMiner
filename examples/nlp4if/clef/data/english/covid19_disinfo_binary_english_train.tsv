@@ -1,4 +1,4 @@
-tweet_no	tweet_text	q1_label	q2_label	q3_label	q4_label	q5_label	q6_label	q7_label
+tweet_no	text	q1_label	q2_label	q3_label	q4_label	q5_label	q6_label	q7_label
 1	For the average American the best way to tell if you have covid-19 is to cough in a rich person’s face and wait for their test results	no	nan	nan	nan	nan	no	no
 2	this is fucking bullshit	no	nan	nan	nan	nan	no	no
 3	Can y’all please just follow the government’s instructions so we can knock this COVID-19 out and be done?! I feel like a kindergartner that keeps losing more recess time because one or two kids can’t follow directions.	no	nan	nan	nan	nan	no	no
