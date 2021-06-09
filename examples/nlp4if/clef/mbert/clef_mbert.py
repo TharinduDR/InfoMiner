@@ -21,13 +21,13 @@ languages = {
                "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_arabic_dev_input.tsv",
                "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_arabic_test_input.tsv"],
 
-    "Bulgarian": ["examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_bulgarian_train.tsv",
-                  "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_bulgarian_dev_input.tsv",
-                  "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_bulgarian_test_input.tsv"],
+    "Bulgarian": ["examples/nlp4if/clef/data/bulgarian/covid19_disinfo_binary_bulgarian_train.tsv",
+                  "examples/nlp4if/clef/data/bulgarian/covid19_disinfo_binary_bulgarian_dev_input.tsv",
+                  "examples/nlp4if/clef/data/bulgarian/covid19_disinfo_binary_bulgarian_test_input.tsv"],
 
-    "English": ["examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_english_train.tsv",
-                "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_english_dev_input.tsv",
-                "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_english_test_input.tsv"]
+    "English": ["examples/nlp4if/clef/data/english/covid19_disinfo_binary_english_train.tsv",
+                "examples/nlp4if/clef/data/english/covid19_disinfo_binary_english_dev_input.tsv",
+                "examples/nlp4if/clef/data/english/covid19_disinfo_binary_english_test_input.tsv"]
     #
     # "Spanish": ["examples/clef/data/dataset_train_spanish.tsv",
     #           "examples/clef/data/dataset_dev_spanish.tsv",
