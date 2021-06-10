@@ -103,8 +103,8 @@ eng_dev = dev_list[2]
 train = train.sample(frac=1)
 
 ara_dev_preds = np.zeros((len(dev_sentences_list[0]), config["n_fold"]))
-bul_dev_preds = np.zeros((len(dev_sentences_list[0]), config["n_fold"]))
-eng_dev_preds = np.zeros((len(dev_sentences_list[0]), config["n_fold"]))
+bul_dev_preds = np.zeros((len(dev_sentences_list[1]), config["n_fold"]))
+eng_dev_preds = np.zeros((len(dev_sentences_list[2]), config["n_fold"]))
 # test_preds = np.zeros((len(test_sentences_list), config["n_fold"]))
 
 for i in range(config["n_fold"]):
