@@ -95,9 +95,9 @@ for key, value in languages.items():
     # test_sentences_list.append(test_sentences_temp)
 
 train = pd.concat(train_list)
-ara_dev = pd.concat(dev_list[0])
-bul_dev = pd.concat(dev_list[1])
-eng_dev = pd.concat(dev_list[2])
+ara_dev = dev_list[0]
+bul_dev = dev_list[1]
+eng_dev = dev_list[2]
 
 # shuffle samples in train set
 train = train.sample(frac=1)
