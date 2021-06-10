@@ -19,25 +19,25 @@ if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 
 languages = {
-    "Arabic": ["examples/clef/data/CT21-AR-Train-T1-Labels.tsv",
-              "examples/clef/data/CT21-AR-Dev-T1-Labels.tsv",
-              "examples/clef/data/CT21-AR-Test-T1.tsv"],
+    "Arabic": ["examples/mbert_all/data/CT21-AR-Train-T1-Labels.tsv",
+              "examples/mbert_all/data/CT21-AR-Dev-T1-Labels.tsv",
+              "examples/mbert_all/data/CT21-AR-Test-T1.tsv"],
 
-    "Bulgarian": ["examples/clef/data/dataset_train_v1_bulgarian.tsv",
-              "examples/clef/data/dataset_dev_v1_bulgarian.tsv",
-              "examples/clef/data/dataset_test_input_bulgarian.tsv"],
+    "Bulgarian": ["examples/mbert_all/data/dataset_train_v1_bulgarian.tsv",
+              "examples/mbert_all/data/dataset_dev_v1_bulgarian.tsv",
+              "examples/mbert_all/data/dataset_test_input_bulgarian.tsv"],
 
-    "English": ["examples/clef/data/dataset_train_v1_english.tsv",
-              "examples/clef/data/dataset_dev_v1_english.tsv",
-              "examples/clef/data/dataset_test_input_english.tsv"],
+    "English": ["examples/mbert_all/data/dataset_train_v1_english.tsv",
+              "examples/mbert_all/data/dataset_dev_v1_english.tsv",
+              "examples/mbert_all/data/dataset_test_input_english.tsv"],
 
-    "Spanish": ["examples/clef/data/dataset_train_spanish.tsv",
-              "examples/clef/data/dataset_dev_spanish.tsv",
-              "examples/clef/data/dataset_test_spanish.tsv"],
+    "Spanish": ["examples/mbert_all/data/dataset_train_spanish.tsv",
+              "examples/mbert_all/data/dataset_dev_spanish.tsv",
+              "examples/mbert_all/data/dataset_test_spanish.tsv"],
 
-    "Turkish": ["examples/clef/data/dataset_train_v1_turkish.tsv",
-              "examples/clef/data/dataset_test_v1_turkish.tsv",
-              "examples/clef/data/dataset_dev_v1_turkish.tsv"],
+    "Turkish": ["examples/mbert_all/data/dataset_train_v1_turkish.tsv",
+              "examples/mbert_all/data/dataset_test_v1_turkish.tsv",
+              "examples/mbert_all/data/dataset_dev_v1_turkish.tsv"],
 }
 
 train_list = []

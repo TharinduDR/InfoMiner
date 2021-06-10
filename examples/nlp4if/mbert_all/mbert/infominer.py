@@ -19,25 +19,25 @@ if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 
 languages = {
-    "Arabic": ["examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_arabic_train.tsv",
-              "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_arabic_dev_input.tsv",
-              "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_arabic_test_input.tsv"],
+    "Arabic": ["examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_arabic_train.tsv",
+              "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_arabic_dev_input.tsv",
+              "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_arabic_test_input.tsv"],
 
-    "Bulgarian": ["examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_bulgarian_train.tsv",
-              "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_bulgarian_dev_input.tsv",
-              "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_bulgarian_test_input.tsv"],
+    "Bulgarian": ["examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_bulgarian_train.tsv",
+              "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_bulgarian_dev_input.tsv",
+              "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_bulgarian_test_input.tsv"],
 
-    "English": ["examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_english_train.tsv",
-              "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_english_dev_input.tsv",
-              "examples/nlp4if/clef/data/arabic/covid19_disinfo_binary_english_test_input.tsv"]
+    "English": ["examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_english_train.tsv",
+              "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_english_dev_input.tsv",
+              "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_english_test_input.tsv"]
     #
-    # "Spanish": ["examples/clef/data/dataset_train_spanish.tsv",
-    #           "examples/clef/data/dataset_dev_spanish.tsv",
-    #           "examples/clef/data/dataset_test_spanish.tsv"],
+    # "Spanish": ["examples/mbert_all/data/dataset_train_spanish.tsv",
+    #           "examples/mbert_all/data/dataset_dev_spanish.tsv",
+    #           "examples/mbert_all/data/dataset_test_spanish.tsv"],
     #
-    # "Turkish": ["examples/clef/data/dataset_train_v1_turkish.tsv",
-    #           "examples/clef/data/dataset_test_v1_turkish.tsv",
-    #           "examples/clef/data/dataset_dev_v1_turkish.tsv"],
+    # "Turkish": ["examples/mbert_all/data/dataset_train_v1_turkish.tsv",
+    #           "examples/mbert_all/data/dataset_test_v1_turkish.tsv",
+    #           "examples/mbert_all/data/dataset_dev_v1_turkish.tsv"],
 }
 
 train_list = []
