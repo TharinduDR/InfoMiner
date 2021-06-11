@@ -11,7 +11,7 @@ from examples.nlp4if.common.converter import encode, decode
 from examples.nlp4if.common.evaluation import precision, recall, f1, confusion_matrix_values
 from examples.nlp4if.mbert_all.mbert.mbert_all_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
     SUBMISSION_FILE
-from examples.sample_size_counter import sample_size_counter
+from examples.sample_size_counter import sample_size_counter,data_balancer
 from infominer.classification import ClassificationModel
 
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
@@ -94,7 +94,9 @@ for key, value in languages.items():
     dev_sentences_list.append(dev_sentences_temp)
     # test_sentences_list.append(test_sentences_temp)
 
-train = pd.concat(train_list)
+# train = pd.concat(train_list)
+train = data_balancer(train_list)
+
 ara_dev = dev_list[0]
 bul_dev = dev_list[1]
 eng_dev = dev_list[2]
