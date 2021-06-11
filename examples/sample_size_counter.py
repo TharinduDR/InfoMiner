@@ -26,7 +26,7 @@ def data_balancer(train_list):
     shuffled_list = train_list[1].sample(frac=1)
     shuffled_list = train_list[2].sample(frac=1)
 
-    for i in shortest_length:
+    for i in range(shortest_length):
         balanced_list.append(train_list[0][i])
         balanced_list.append(train_list[1][i])
         balanced_list.append(train_list[2][i])
