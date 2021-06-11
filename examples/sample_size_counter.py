@@ -19,6 +19,7 @@ def data_balancer(train_list):
         elif shortest_length > len(lang):
             shortest_length = len(lang)
 
+    print("shortest_length: ", shortest_length)
     balanced_list = []
 
     # shuffle
@@ -27,9 +28,11 @@ def data_balancer(train_list):
     shuffled_list = train_list[2].sample(frac=1)
 
     for i in range(shortest_length):
-        balanced_list.append(train_list[0][i])
-        balanced_list.append(train_list[1][i])
-        balanced_list.append(train_list[2][i])
+        balanced_list.append(train_list[0].iloc[[i]])
+        balanced_list.append(train_list[1].iloc[[i]])
+        balanced_list.append(train_list[2].iloc[[i]])
 
     balanced_list = pd.concat(balanced_list)
+    print(balanced_list.head())
+
     return balanced_list
