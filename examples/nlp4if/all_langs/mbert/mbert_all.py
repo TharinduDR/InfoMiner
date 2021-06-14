@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 from examples.nlp4if.common.converter import encode, decode
 from examples.nlp4if.common.evaluation import precision, recall, f1, confusion_matrix_values
-from examples.nlp4if.mbert_all.mbert.mbert_all_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
+from examples.nlp4if.all_langs.mbert.mbert_all_config import TEMP_DIRECTORY, config, MODEL_TYPE, MODEL_NAME, SEED, \
     SUBMISSION_FILE
 from examples.sample_size_counter import sample_size_counter,data_balancer
 from infominer.classification import ClassificationModel
@@ -17,25 +17,25 @@ from infominer.classification import ClassificationModel
 if not os.path.exists(TEMP_DIRECTORY): os.makedirs(TEMP_DIRECTORY)
 
 languages = {
-    "Arabic": ["examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_arabic_train.tsv",
-               "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_arabic_dev_input.tsv",
-               "examples/nlp4if/mbert_all/data/arabic/covid19_disinfo_binary_arabic_test_input.tsv"],
+    "Arabic": ["examples/nlp4if/all_langs/data/arabic/covid19_disinfo_binary_arabic_train.tsv",
+               "examples/nlp4if/all_langs/data/arabic/covid19_disinfo_binary_arabic_dev_input.tsv",
+               "examples/nlp4if/all_langs/data/arabic/covid19_disinfo_binary_arabic_test_input.tsv"],
 
-    "Bulgarian": ["examples/nlp4if/mbert_all/data/bulgarian/covid19_disinfo_binary_bulgarian_train.tsv",
-                  "examples/nlp4if/mbert_all/data/bulgarian/covid19_disinfo_binary_bulgarian_dev.tsv",
-                  "examples/nlp4if/mbert_all/data/bulgarian/covid19_disinfo_binary_bulgarian_test_input.tsv"],
+    "Bulgarian": ["examples/nlp4if/all_langs/data/bulgarian/covid19_disinfo_binary_bulgarian_train.tsv",
+                  "examples/nlp4if/all_langs/data/bulgarian/covid19_disinfo_binary_bulgarian_dev.tsv",
+                  "examples/nlp4if/all_langs/data/bulgarian/covid19_disinfo_binary_bulgarian_test_input.tsv"],
 
-    "English": ["examples/nlp4if/mbert_all/data/english/covid19_disinfo_binary_english_train.tsv",
-                "examples/nlp4if/mbert_all/data/english/covid19_disinfo_binary_english_dev_input.tsv",
-                "examples/nlp4if/mbert_all/data/english/covid19_disinfo_binary_english_test_input.tsv"]
+    "English": ["examples/nlp4if/all_langs/data/english/covid19_disinfo_binary_english_train.tsv",
+                "examples/nlp4if/all_langs/data/english/covid19_disinfo_binary_english_dev_input.tsv",
+                "examples/nlp4if/all_langs/data/english/covid19_disinfo_binary_english_test_input.tsv"]
     #
-    # "Spanish": ["examples/mbert_all/data/dataset_train_spanish.tsv",
-    #           "examples/mbert_all/data/dataset_dev_spanish.tsv",
-    #           "examples/mbert_all/data/dataset_test_spanish.tsv"],
+    # "Spanish": ["examples/all_langs/data/dataset_train_spanish.tsv",
+    #           "examples/all_langs/data/dataset_dev_spanish.tsv",
+    #           "examples/all_langs/data/dataset_test_spanish.tsv"],
     #
-    # "Turkish": ["examples/mbert_all/data/dataset_train_v1_turkish.tsv",
-    #           "examples/mbert_all/data/dataset_test_v1_turkish.tsv",
-    #           "examples/mbert_all/data/dataset_dev_v1_turkish.tsv"],
+    # "Turkish": ["examples/all_langs/data/dataset_train_v1_turkish.tsv",
+    #           "examples/all_langs/data/dataset_test_v1_turkish.tsv",
+    #           "examples/all_langs/data/dataset_dev_v1_turkish.tsv"],
 }
 
 train_list = []
