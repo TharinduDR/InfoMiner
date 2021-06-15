@@ -85,6 +85,9 @@ for key, value in languages.items():
     dev_temp['labels'] = encode(dev_temp["q1_label"])
     dev_temp = dev_temp[['text', 'labels']]
 
+    test_temp['labels'] = encode(test_temp["q1_label"])
+    test_temp = test_temp[['text', 'labels']]
+
     dev_sentences_temp = dev_temp['text'].tolist()
     test_sentences_temp = test_temp['text'].tolist()
 
