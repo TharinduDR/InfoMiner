@@ -160,13 +160,14 @@ for i in range(config["n_fold"]):
 
     print("Completed Fold {}".format(i))
 
+########################## DEV ##############################
 # select majority class of each instance (row)
-ara_test_final_predictions = []
+ara_dev_final_predictions = []
 for row in ara_dev_preds:
     row = row.tolist()
-    ara_test_final_predictions.append(int(max(set(row), key=row.count)))
+    ara_dev_final_predictions.append(int(max(set(row), key=row.count)))
 
-ara_dev["predictions"] = ara_test_final_predictions
+ara_dev["predictions"] = ara_dev_final_predictions
 
 print("--------------Arabic--------------")
 print("Precision: ", precision(ara_dev['labels'].tolist(), ara_dev['predictions'].tolist()))
@@ -177,12 +178,12 @@ tn, fp, fn, tp = confusion_matrix_values(ara_dev['labels'].tolist(), ara_dev['pr
 print("Confusion Matrix (tn, fp, fn, tp) {} {} {} {}".format(tn, fp, fn, tp))
 
 # select majority class of each instance (row)
-bul_test_final_predictions = []
+bul_dev_final_predictions = []
 for row in bul_dev_preds:
     row = row.tolist()
-    bul_test_final_predictions.append(int(max(set(row), key=row.count)))
+    bul_dev_final_predictions.append(int(max(set(row), key=row.count)))
 
-bul_dev["predictions"] = bul_test_final_predictions
+bul_dev["predictions"] = bul_dev_final_predictions
 
 print("--------------Bulgarian--------------")
 print("Precision: ", precision(bul_dev['labels'].tolist(), bul_dev['predictions'].tolist()))
@@ -193,12 +194,12 @@ tn, fp, fn, tp = confusion_matrix_values(bul_dev['labels'].tolist(), bul_dev['pr
 print("Confusion Matrix (tn, fp, fn, tp) {} {} {} {}".format(tn, fp, fn, tp))
 
 # select majority class of each instance (row)
-eng_test_final_predictions = []
+eng_dev_final_predictions = []
 for row in eng_dev_preds:
     row = row.tolist()
-    eng_test_final_predictions.append(int(max(set(row), key=row.count)))
+    eng_dev_final_predictions.append(int(max(set(row), key=row.count)))
 
-eng_dev["predictions"] = eng_test_final_predictions
+eng_dev["predictions"] = eng_dev_final_predictions
 
 print("--------------English--------------")
 print("Precision: ", precision(eng_dev['labels'].tolist(), eng_dev['predictions'].tolist()))
@@ -208,6 +209,7 @@ print("F1: ", f1(eng_dev['labels'].tolist(), eng_dev['predictions'].tolist()))
 tn, fp, fn, tp = confusion_matrix_values(eng_dev['labels'].tolist(), eng_dev['predictions'].tolist())
 print("Confusion Matrix (tn, fp, fn, tp) {} {} {} {}".format(tn, fp, fn, tp))
 
+########################## TEST #############################
 # select majority class of each instance (row)
 ara_test_final_predictions = []
 for row in ara_test_preds:
